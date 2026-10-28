@@ -1,0 +1,23 @@
+---
+name: data-sql-analysis
+description: "Write or review analytical SQL when joins, metric denominators, dates, windows or dialect differences could change the result."
+---
+
+# Analytical SQL
+
+For an analyst or developer producing a query, result contract and correctness evidence. A query alone can be the requested deliverable; execution is not required for completion of a preparation-only assignment.
+
+## Workflow
+
+1. **Bind the contract.** Record actual engine and version, execution surface, schema-qualified input objects, column types, table grains, candidate/declared keys and their evidence. Define population, filters, half-open time interval, reporting timezone/calendar, output columns/types/units, row grain, unique key and ordering. Define each metric's numerator, denominator, eligibility, weights, missing-value policy and zero-denominator result. Record allowed reads, permitted output destination/PII restrictions and compute budget (time, scan/cost, returned rows). Resolve available facts from authorized metadata; ask only for consequential unresolved facts. Unknown schema or engine permits a labeled logical plan, not a claim of executable SQL.
+2. **Bind authority and dialect before submission.** Skill selection grants no install, authentication, connection, execution, file-write or deployment authority. Do not install/connect, change schema/indexes or rewrite data merely to analyze it. Read-only/`SELECT` can still consume resources, lock, invoke functions or contain modifying substatements. Inspect the complete statement, referenced views/functions and execution surface. When choosing syntax, working through SAS, or assessing a plan, read [dialect and execution boundaries](references/dialect-and-execution.md). Finish with a supported syntax basis and explicit preparation-only or authorized-execution scope.
+3. **Prove the grain transformations.** List the expected cardinality of every join, null/missing-key and unmatched-row policy, filters before/after outer joins, intermediate grain and required preaggregation. Do not use `DISTINCT` or `SUM(DISTINCT ...)` to conceal inflation. When joining, aggregating, completing dates or using windows, read [correctness checks](references/query-correctness.md) and apply the relevant checks. Finish with a trace from source rows to output grain and conserved counts/totals.
+4. **Produce concrete SQL and validation expectations.** Use explicit output columns, correctly typed parameters and deterministic order where required. Keep denominators visible. Specify independent source-grain calculations, duplicate-key/unmatched tests and expected boundary results, rather than checking the query against itself. When a runnable synthetic illustration or join-inflation/denominator fixture is needed, read [the PostgreSQL 17 example](references/synthetic-example.md). Do not pass its syntax off as portable to other engines.
+5. **Execute only if authorized; reconcile evidence.** Use the bound reads and budget, including diagnostic queries and plan inspection. Prefer already supplied schema/plan/result evidence where adequate. Stop on unsupported syntax, schema drift, unbounded work, privacy violations or failed grain checks; correct the contract/query before further submission. For timeout/lost response, preserve the query/job identity and reconcile completion/cancellation using the existing authorized execution interface before any retry; do not launch duplicate expensive work. Do not infer cancellation from a client disconnect.
+6. **Deliver the result and limits.** Return the contract, final SQL/typed parameters, independent validation table (`check`, `expected`, `observed`, `status`, `evidence`), exclusions/unmatched counts, and any observed plan/budget evidence. Use `not run`/`unknown` when unobserved, not `pass` or `unsupported`. Mark a query executable only for its evidenced dialect/schema. If executed, verify output schema, uniqueness, coverage and values before analytical conclusions; unresolved discrepancies block a trusted result, not delivery of an honestly labeled query and discrepancy report.
+
+## Completion boundary
+
+Distinguish prepared query, authorized submission, terminal completion and validated business result. Avoid raw identifiers/free text in output; use approved aggregate disclosure rules and explicitly bounded samples only when needed and authorized. Do not invent suppression thresholds or treat aggregation as proof of anonymity. The execution client owns session/submission and resource lifetime; this skill owns analytical correctness, not a competing client procedure.
+
+Technical source scope and rights: [SOURCES.md](SOURCES.md).

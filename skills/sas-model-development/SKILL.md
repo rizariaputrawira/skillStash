@@ -1,0 +1,31 @@
+---
+name: sas-model-development
+description: "Develop and evaluate SAS classification, regression, or applicable unsupervised models; load for leakage-safe experiments, Model Studio pipelines, procedure or CAS modeling, and scoring evidence."
+---
+
+# SAS model development
+
+Use this skill to turn an analytical objective into a reproducible development/evaluation artifact, not a deployment approval. Guidance is version-neutral; technical claims and operations are version-bound. Selection grants no permission to install, authenticate, read restricted data, train, create tables/files, submit jobs, register, publish, or deploy.
+
+## Ordered workflow
+
+1. **Fix the modeling contract.** Record objective and decision, population, entity and observation grain, prediction time/horizon, outcome definition and label availability, intended scoring population, permitted reads/training/artifact locations, and compute/time/trial budget. For classification specify raw and formatted event levels; for regression specify target units and loss. For clustering, anomaly detection, or dimension reduction, state the target-free objective and how usefulness/stability will be assessed instead of inventing a target. Forecasting and dependent observations require temporal evaluation, not an automatic random split. Finish with explicit inputs, exclusions, success criteria, and authority limits.
+2. **Establish the environment without guessing.** Record execution surface, installed product/release evidence, entitlements, procedure/action/node availability, and applicable documentation edition. A document date or collection identifier is not the installed runtime version. Unknown version permits methodology and a complete operation plan, but blocks asserting syntax/options/UI compatibility or performing an unestablished technical operation. Distinguish **unknown/not established** from **unsupported**, which requires target-specific evidence.
+3. **Audit features and labels before fitting.** Build a feature ledger: source, key/grain, construction window, event time, actual availability time, transformation, missingness policy, and inclusion rationale. Reject or revise post-decision information, outcome proxies, future aggregates, and joins that duplicate observations or cross cutoffs. Check label maturity/censoring and domain-valid values rather than imposing arbitrary bounds. Finish with reconciled row/entity/label counts and documented feature eligibility.
+4. **Freeze partitions and preprocessing.** Choose grouped, temporal, stratified, or combined partitioning to match the intended generalization claim. Record membership and seed/cutoffs; enforce the required entity/time isolation and account for overlapping outcome windows. Seal final test membership and labels from tuning. Fit imputation, scaling, encoding, feature selection, resampling and calibration only on allowed training portions, inside each training fold when resampling; apply frozen learned values to validation/test. Read [development and evaluation](references/development-evaluation.md) when designing partitions, metrics, scoring checks, or offline fixtures. Finish with contamination checks and a reproducible transform specification.
+5. **Choose and run the bounded path only when authorized.** Establish a simple objective-appropriate baseline, then a small justified candidate set; record all trials, hyperparameters, convergence/errors, data exclusions, resource usage and stopping reason. Tune only with development validation/folds. If authorization or runtime evidence is missing, produce the complete fitting/scoring plan and mark execution unperformed.
+   - When using the Model Studio interface, read [Model Studio](references/model-studio.md) before configuring roles, metadata, nodes, or comparison.
+   - When fitting/scoring through SAS procedures, read [procedure modeling](references/procedure-modeling.md) before emitting or submitting programmatic syntax.
+   - When using CAS analytical actions, read [CAS modeling](references/cas-modeling.md) before selecting action contracts or artifacts.
+6. **Select, then evaluate once.** Compare candidates on identical eligible observations/weights, objective, event definition, units, and validation protocol. Choose metric and threshold by operational objective; do not equate accuracy, ranking, probability quality, or business utility. Lock the candidate, transforms and threshold before final test. Report uncertainty, subgroup/time behavior, excluded cases and baseline comparison. If test results drive another model change, disclose that test is now development evidence; obtain a genuinely untouched assessment set or qualify the result.
+7. **Check scoring consistency and deliver evidence.** Check input schema/types/formats, units, category mapping, missing/unseen levels, feature availability and frozen transformation order. Compare development and exported/restored scoring on keyed synthetic/approved cases using a declared tolerance and decision-boundary checks. Score agreement on sampled cases is not a guarantee of zero distortion, generalization, fairness, or production readiness. Return the evidence packet below; separate any authorized handoff from model development.
+
+## Required result
+
+- Objective, modeling contract, permissions and actual environment/source pins.
+- Data/feature ledger, label maturity, partitions and leakage/preprocessing check results.
+- Baseline and trial ledger, chosen candidate/threshold, metric definitions and assessment evidence.
+- Scoring schema/transforms/artifact identities, parity tolerance/results and reproducibility limits.
+- Status for each layer: planned, executed, observed successful, failed, or not established; exact blockers and next permitted action.
+
+Session/submission mechanics belong to the selected SASPy or SAS execution client; SWAT owns CAS sessions/actions/table lifetime; REST Compute/Job and Workbench CLI own their jobs; sasctl owns registration/publishing; lifecycle governance owns approval. Use the available authorized integration without requiring another package or reproducing its setup. A Model Studio champion is a configured selection result, not approval. No universal DS2, fraud-engine, or deployment-package compatibility is implied. Provenance and technical limits are in [SOURCES.md](SOURCES.md).

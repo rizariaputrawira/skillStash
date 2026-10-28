@@ -1,8 +1,8 @@
 # Skillstash
 
-**Standalone skills for SAS work.**
+**Standalone skills for data analysis, SAS modeling and software integrations.**
 
-Optional AI-agent guidance for SAS and SAS Viya: choose the skills you need for service integrations, data processing, decisioning or model governance. Each folder works independently of KitShift, Leanflow and the other skills in this repository.
+Optional AI-agent guidance for analytical questions, SQL, analysis review, SAS programming and model development, plus SAS/Viya service integrations, decisioning and model governance. Each folder works independently of KitShift, Leanflow and the other skills in this repository.
 
 This is a skill collection, not a coding-agent runtime, workflow suite or Git cherry-pick mechanism. It does not install SAS clients, connect services or grant deployment access.
 
@@ -24,7 +24,9 @@ This is a skill collection, not a coding-agent runtime, workflow suite or Git ch
 - **SAS integrations:** procedures for `sasctl`, SWAT, SASPy, REST and Workbench, with distinct client and runtime boundaries.
 - **Decisioning:** MCP-aware asset review, lookup versions, MAS publication and business-result verification, subject to actual product support.
 - **Model governance:** evidence templates, fraud-model review and monitoring plans, with approval kept separate from execution.
-- **Independent selection:** eight self-contained packages with small entrypoints, conditional references and local provenance records.
+- **Analytical work:** question framing, data profiling, SQL correctness, statistical interpretation and independent review of findings.
+- **SAS development:** program correctness and model development, with version-neutral procedures and version-bound technical claims.
+- **Independent selection:** thirteen self-contained packages with small entrypoints, conditional references and local provenance records.
 
 Skills supply procedures, not guarantees of agent compliance, product compatibility or successful SAS execution.
 
@@ -43,7 +45,7 @@ No package installation or language runtime is required to read the skills. Exec
 
 ### 2. Select a skill
 
-Use the [skill collection](#skill-collection) to choose the execution or review surface, then read that folder's `SKILL.md`. For example, select `sas-viya-python-cas` for server-side CAS processing, not SASPy or a generic REST workflow.
+Use the [skill collection](#skill-collection) to choose the task first, then the execution surface, and read that folder's `SKILL.md`. For example, select `data-analysis` to investigate a business question, `sas-model-development` to develop a model, and `sas-viya-python-cas` when the requested operation is a Python CAS workflow.
 
 Copy the **entire skill folder**, including `references/` and its source record, into the skills location supported by your agent host. Read that host's discovery documentation; this repository does not assume a global path, recursive discovery or a particular invocation syntax.
 
@@ -60,6 +62,8 @@ The host supplies the agent and tools. The skill supplies procedure, not credent
 The selected `SKILL.md` defines the core workflow and points to specialized references only when the task needs them. Each package contains its own source/provenance record and works without siblings or repository-root documents. There is no installer, router, shared runtime or suite activation.
 
 Choose by execution surface: `sasctl` integrates with Viya services; SWAT runs CAS actions; SASPy runs SAS code through a SAS session, including Viya Compute or SAS 9.4 Workspace Server; `wbctl` controls a separate SAS Workbench installation and its jobs/resources; the accelerator adds its own Model Definition Builder and content workflows. These are not interchangeable clients or runtimes. REST guidance also applies outside Python.
+
+Analysis and implementation are different invocation surfaces. `data-analysis` owns question-to-evidence analysis; `data-sql-analysis` owns analytical query correctness; `data-analysis-review` reviews supplied evidence without silently changing it. `sas-programming` owns SAS program correctness and `sas-model-development` owns analytical model development. None requires a sibling skill, supplies a connection, or turns model selection into permission to publish.
 
 ### MCP integrations
 
@@ -85,12 +89,17 @@ Ask for the actual task, or name a skill when you want its procedure. Selection 
 
 Canonical names use `<domain>-<capability>` in lowercase kebab-case. Use `sas-` for SAS-specific skills, with product/client qualifiers where useful, such as `sas-viya-rest-api` or `sas-saspy-python`. The prefix describes the task domain, not the upstream author or repository.
 
-For future non-SAS skills, choose a descriptive domain such as `data-`, `cloud-` or `finance-`; do not force unrelated guidance under `sas-`. A portable, vendor-neutral capability should use its own domain. These are naming examples, not additional packages. Directory names and `SKILL.md` frontmatter names must match.
+For vendor-neutral skills, use a descriptive domain such as `data-`; do not force unrelated guidance under `sas-`. The `data-*` packages below are portable analytical capabilities, not SAS-only workflows. Directory names and `SKILL.md` frontmatter names must match.
 
 ### Skill collection
 
 | Skill | Select it when you need |
 | --- | --- |
+| [`data-analysis`](skills/data-analysis/SKILL.md) | Investigate a business question or unfamiliar dataset; define metrics, profile data, calculate comparisons and communicate evidence with limitations |
+| [`data-sql-analysis`](skills/data-sql-analysis/SKILL.md) | Write, diagnose or reconcile analytical SQL against the actual engine, schema, grain and result contract |
+| [`data-analysis-review`](skills/data-analysis-review/SKILL.md) | Independently review supplied calculations, queries, charts and conclusions without silently modifying the analysis |
+| [`sas-programming`](skills/sas-programming/SKILL.md) | Write, debug or refactor SAS programs; reconcile logs and outputs using release-matched language and Compute/CAS evidence |
+| [`sas-model-development`](skills/sas-model-development/SKILL.md) | Develop and compare SAS models; verify target/event, feature availability, partitions, preprocessing, assessment and scoring artifacts for the selected runtime |
 | [`sas-sasctl-python`](skills/sas-sasctl-python/SKILL.md) | Python integration through `sasctl`: service calls, model registration, packaging, publishing, and outcome verification |
 | [`sas-viya-python-cas`](skills/sas-viya-python-cas/SKILL.md) | Python SWAT workflows: CAS connections/actions, server-side data processing, and table/session lifecycle |
 | [`sas-viya-rest-api`](skills/sas-viya-rest-api/SKILL.md) | Language-independent REST integrations, OAuth, API contracts, and asynchronous SAS Compute/Job Execution |
@@ -102,6 +111,11 @@ For future non-SAS skills, choose a descriptive domain such as `data-`, `cloud-`
 
 ### Example requests
 
+- “Use `data-analysis` to investigate the supplied synthetic sales extract; compare complete periods, explain the metric definitions and do not change the source.”
+- “Use `data-sql-analysis` to correct this analytical query for our actual database dialect; check join cardinality and the rate denominator before execution.”
+- “Use `data-analysis-review` to independently check this report's calculations and causal claims; leave the supplied files unchanged.”
+- “Use `sas-programming` to review this DATA-step merge and its expected outputs offline; establish the runtime before proposing CAS-specific changes.”
+- “Use `sas-model-development` to review our target event, partition mapping and feature timing; match Model Studio instructions to the documented release and do not train or publish.”
 - “Use `sas-sasctl-python` to prepare model registration for our deployment; inspect installed versions and do not publish.”
 - “Use `sas-viya-python-cas` to summarize an existing CAS table without downloading the entire table.”
 - “Use `sas-viya-rest-api` to submit SAS code through Compute and verify the job's logs and output.”
@@ -148,11 +162,15 @@ There is no single “SAS Viya version” that guarantees every integration work
 
 Select release-matched official documentation and verify the target's capabilities before relying on an operation. An API catalog's highest version, a package badge, a documentation collection identifier, and today's date are not deployment compatibility evidence. Unknown facts must remain explicit.
 
+**Version-neutral procedure, version-bound technical claims.** The new SAS programming and model-development entrypoints keep stable decision and verification steps in the core, with task-based references declaring their documented product, runtime and release applicability. Select references against the target evidence before using syntax, options or UI steps. A consulted release is not automatically supported on adjacent releases. Unknown or mismatched versions block only the dependent compatibility claim or operation; safe offline preparation can continue. Distinguish documented behavior, observed capability and exercised results, and distinguish unverified from unsupported. Each package retains its own rules and source record so it remains usable alone.
+
 The reference snapshot was researched on **2026-10-28**. Source versions describe what was consulted, not a promise of newest-release support. See [SOURCES.md](SOURCES.md) and the sources reference inside each package.
 
 ## Verification and known limits
 
 Package structure, frontmatter, relative links and local examples can be checked offline. Source-loaded synthetic exercises can check how an agent follows a branch, but do not establish a universal behavior guarantee.
+
+For the five analysis/programming/model-development additions, the **2026-10-28** offline check covered 28 Markdown files, frontmatter names/descriptions, 99 relative file/fragment links across the new packages and root catalog/source index, four fenced examples, and numerical boundary cases. Five fresh source-loaded exercises used isolated package copies: matched-period analysis, a read-only SQLite join/denominator correction, weighted-average/causal-claim review, source-bound SAS MERGE reasoning, and a Model Studio leakage/partition/version review. Their expected results were observed and package/fixture hashes remained unchanged. The SAS examples and PostgreSQL example were not executed; these bounded exercises do not establish generalized agent reliability or native host discovery.
 
 **Not established by those checks:** native host discovery, SAS authentication, permissions, deployed-product compatibility, CAS actions, model deployment, Compute jobs or end-to-end Fraud Decisioning behavior. Live workflows require an authorized environment. The invocation examples above are not evidence that a host discovers the skills or that a live SAS workflow has been tested.
 
@@ -170,6 +188,6 @@ For host discovery or SAS deployment problems, consult the relevant host documen
 - [Sources and provenance](SOURCES.md): source/version index, incorporation limits and license observations.
 - [Skill packages](skills/): entrypoints, conditional references and package-local detailed source records.
 
-The skills contain independently authored procedural guidance informed by official SAS documentation and projects, plus an explicitly attributed **CC BY 4.0 adaptation** in the lifecycle skill's [evidence templates](skills/sas-trustworthy-ai-lifecycle/references/lifecycle-evidence.md). They do not bundle upstream implementation code or third-party binaries/media, and imply no SAS endorsement. Referenced materials retain their own terms.
+The skills contain independently authored procedural guidance informed by official analytical-tool/statistical references and SAS documentation/projects, plus an explicitly attributed **CC BY 4.0 adaptation** in the lifecycle skill's [evidence templates](skills/sas-trustworthy-ai-lifecycle/references/lifecycle-evidence.md). They do not bundle upstream implementation code or third-party binaries/media, and imply no vendor endorsement. Referenced materials retain their own terms.
 
 This repository declares **no repository-wide license** for its original skill texts. The adapted file's stated license is a specific exception, not a license for all other files. Consult the package-local source record before copying or adapting additional upstream material.
