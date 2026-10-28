@@ -1,5 +1,5 @@
 ---
-name: sasctl-python
+name: sas-sasctl-python
 description: "Use when integrating Python with SAS Viya through sasctl sessions, service calls, model registration, packaging, publishing, or scoring."
 ---
 

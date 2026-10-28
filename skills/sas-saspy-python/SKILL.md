@@ -1,5 +1,5 @@
 ---
-name: saspy-python
+name: sas-saspy-python
 description: "Use when running SAS programs from Python through SASPy, configuring SAS sessions, exchanging SAS datasets with pandas, or diagnosing submission and conversion problems."
 ---
 
