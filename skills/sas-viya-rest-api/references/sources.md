@@ -14,6 +14,7 @@ Consulted **2026-10-28**:
 | [Compute usage notes](https://developer.sas.com/rest-apis/compute-v24/docs/getting-started/usage-notes.md) | Collection/filter and request conventions; support remains operation-specific |
 | [Compute createJob](https://developer.sas.com/rest-apis/compute-v24/createJob/index.md) and [getJobState](https://developer.sas.com/rest-apis/compute-v24/getJobState/index.md) | Async 201 submission, representation versus API versions, text state response, conditional polling |
 | [Job Execution v7 index](https://developer.sas.com/rest-apis/jobExecution-v7/index.md) | Separate provider/job-request lifecycle and listed heartbeat error; provider contracts not exhaustively reviewed |
+| [SAS MCP Server v1.19.0 README](https://github.com/sassoftware/sas-mcp-server/blob/v1.19.0/README.md) and [access classification](https://github.com/sassoftware/sas-mcp-server/blob/v1.19.0/src/sas_mcp_server/tools/_access.py) | Optional interface selection: configured MCP tools versus direct REST, tier/read-only filtering and effect boundaries; not proof of a connected server or complete Fraud Decisioning coverage |
 
 The user-supplied [SAS Developers community](https://communities.sas.com/t5/Developers/bd-p/developers) returned HTTP 403 during retrieval. Its posts were not reviewed and do not substantiate this skill. Community solutions can supply troubleshooting leads, but need release/context checks against official contracts and the target.
 

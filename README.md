@@ -12,8 +12,11 @@ Optional, standalone AI-agent skills to select individually—not a workflow sui
 | [`sas-viya-agentic-ai`](skills/sas-viya-agentic-ai/SKILL.md) | SAS Agentic AI Accelerator: versioned Model Definition Builder, prompt/content workflows, credentials, RAG, deployment and upgrade boundaries |
 | [`saspy-python`](skills/saspy-python/SKILL.md) | Run SAS programs from Python through Viya Compute or SAS 9.4 sessions; validate logs, dataset transfers and session cleanup |
 | [`sas-workbench-cli`](skills/sas-workbench-cli/SKILL.md) | Orchestrate SAS Workbench job definitions, schedules and executions with `wbctl`; verify outcomes and manage environments/storage only when authorized |
+| [`sas-viya-decisioning-mcp`](skills/sas-viya-decisioning-mcp/SKILL.md) | Use discovered SAS MCP tools for supported decisioning assets, rules, lookup versions, MAS publication and business-result verification; check exact Fraud Decisioning applicability |
 
 Choose by execution surface: `sasctl` integrates with Viya services; SWAT runs CAS actions; SASPy runs SAS code through a SAS session, including Viya Compute or SAS 9.4 Workspace Server; `wbctl` controls a separate SAS Workbench installation and its jobs/resources; the accelerator adds its own Model Definition Builder and content workflows. These are not interchangeable clients or runtimes. REST guidance also applies outside Python.
+
+For agent-operated decisioning work, inspect the tools of an already configured SAS MCP server before rebuilding REST orchestration. The skill supplies procedure; the MCP server supplies executable tools. Tool exposure, server version, Viya permissions and the exact SAS product still determine what is available. No MCP server is installed or connected by selecting a skill.
 
 ## Select and use
 
@@ -31,6 +34,7 @@ Example requests:
 - “Use `sas-viya-agentic-ai` to review a 2.4.1 model definition and explain deployment prerequisites without changing the site.”
 - “Use `saspy-python` to prepare a Python-driven SAS reconciliation program for our Compute context; review logs and conversion checks without connecting yet.”
 - “Use `sas-workbench-cli` to prepare a Workbench job launch and dependency checks; do not authenticate, schedule or submit yet.”
+- “Use `sas-viya-decisioning-mcp` to inspect our exposed tools and review an existing decision's rules, revisions and lookup dependencies; do not compile, activate, publish or score.”
 
 These are invocation examples, not evidence that a particular host discovers the skills or that a live SAS workflow has been tested.
 
@@ -43,6 +47,7 @@ There is no single “SAS Viya version” that guarantees every integration work
 - Individual service API contract and request/response representation version.
 - Python runtime and installed `sasctl`/`swat`/`saspy` versions, plus dependencies needed by the workflow.
 - Workbench service capabilities and installed `wbctl` binary/build revision, separately from Viya and SAS engine versions.
+- SAS MCP Server release/image, transport and discovered tool schemas/tier/filter policy, separately from the SAS product and platform versions.
 
 Select release-matched official documentation and verify the target's capabilities before relying on an operation. An API catalog's highest version, a package badge, a documentation collection identifier, and today's date are not deployment compatibility evidence. Unknown facts must remain explicit.
 

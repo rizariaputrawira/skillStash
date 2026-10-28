@@ -7,6 +7,10 @@ description: "Use when implementing or troubleshooting SAS Viya REST integration
 
 For an agent building or diagnosing an authorized integration, not permission to administer a deployment. Works independently of any skill suite or Python client. Deliver the requested client or diagnosis with contract evidence and observed results; never invent endpoints from service names.
 
+## Select the interface before implementation
+
+For an agent-operated task, first inspect any already configured SAS MCP server's actual tool descriptions/schemas. A suitable authorized MCP tool can orchestrate the service calls without a new REST client. A repository URL does not connect that server, and its version/tool tiers do not prove deployed product support. Direct REST remains appropriate for explicitly requested clients, contract diagnostics and uncovered operations when separately authorized; never use it to bypass deliberate MCP filtering, read-only mode or a Viya permission denial. Do not install/configure an MCP server or change OAuth/TLS policy as an implicit prerequisite. This REST skill remains usable independently when no MCP server is configured.
+
 ## Workflow
 
 1. **Bind the target.** Record deployment family (Viya 3.5 or SAS Viya platform), release and Stable/LTS cadence where applicable, relevant patch information, base URL, service, caller identity type, and permitted effects. Read [version selection](references/versioning.md) before choosing a contract. Resolve facts from authorized deployment records or the administrator; unknown release information blocks a compatibility claim, not offline implementation.

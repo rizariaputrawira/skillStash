@@ -14,6 +14,7 @@ Each selectable folder carries its own consulted URLs, version observations, and
 | [`sas-viya-agentic-ai`](skills/sas-viya-agentic-ai/SKILL.md) | [Local source/license record](skills/sas-viya-agentic-ai/references/sources.md): [SAS Agentic AI Accelerator](https://github.com/sassoftware/sas-agentic-ai-accelerator), release baseline **2.4.1**, Apache-2.0 except upstream `/static`; no accelerator code/assets bundled |
 | [`saspy-python`](skills/saspy-python/SKILL.md) | [Local source/license record](skills/saspy-python/SOURCES.md): [SASPy](https://github.com/sassoftware/saspy), release **v5.110.0**, release-tagged session/configuration/conversion contracts and separate IOM Java licensing |
 | [`sas-workbench-cli`](skills/sas-workbench-cli/SKILL.md) | [Local source/license record](skills/sas-workbench-cli/SOURCES.md): [wbctl](https://github.com/sassoftware/wbctl), commit **fd05d61b9ebe1750c0e7c853a7a2e06aab60dfc3**, job/submission orchestration and resource boundaries; no published version inferred from the changelog |
+| [`sas-viya-decisioning-mcp`](skills/sas-viya-decisioning-mcp/SKILL.md) | [Local source/license record](skills/sas-viya-decisioning-mcp/SOURCES.md): [SAS MCP Server](https://github.com/sassoftware/sas-mcp-server), **v1.19.0** / commit **e500fd4d6dac2bd46b8ae67f52934bbe6f3e381c**, discovered-tool decisioning workflows and separate authoring/activation/publication/scoring effects |
 
 ## License review snapshot
 
@@ -27,6 +28,7 @@ Reviewed **2026-10-28**, at the cited upstream release or commit baselines. This
 | `sas-viya-agentic-ai` | Accelerator **2.4.1** README says Apache-2.0 except `/static` SAS-owned material not under an open-source license; model and dependency licenses remain separate; Viya commercial terms apply. | Original prose; no accelerator source, model, static logo, generated content package, third-party library or upstream license text bundled. |
 | `saspy-python` | SASPy **v5.110.0** root license separates Apache-2.0 Python code from IOM Java Client JARs under SAS terms; bundled third-party Java content has its own notice/license alternatives. | Independently authored guidance and compact examples; no upstream source, JARs, notebooks, assets or documentation bodies bundled. See the package-local record for exact evidence and limits. |
 | `sas-workbench-cli` | `wbctl` at **fd05d61** has an Apache-2.0 root license and a separate third-party license inventory; Workbench service/workload terms remain separate. | Independently authored guidance and compact shell/JSON examples; no CLI source/binary, dependencies or generated documentation bodies bundled. Full dependency/binary license audit not performed. |
+| `sas-viya-decisioning-mcp` | SAS MCP Server **v1.19.0** root license and inspected Python headers identify Apache-2.0; dependency/image/connector and SAS product terms require separate review. | Original procedural guidance and synthetic test-spec example; no server code, manifests, SDK/UI assets or license text bundled. No deployed-product support or full dependency-license audit claimed. |
 
 ## Version evidence
 
