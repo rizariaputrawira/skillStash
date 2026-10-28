@@ -26,6 +26,7 @@ Research baseline: **SASPy v5.110.0**, release date **2026-10-20**, commit `ab3c
 - For session setup, authentication, TLS, HTTP versus IOM/SSH/STDIO, or wrong-target errors, read [connections](references/connections.md) before constructing `saspy.SASsession`.
 - For code submission, logs, `PROC PRINTTO`, cancellation, aborts or cleanup, read [submission and lifecycle](references/submission-and-lifecycle.md).
 - For pandas/SAS transfers, dataset inspection, timestamps, encodings, Arrow/Parquet or validation/reconciliation, read [data exchange](references/data-exchange.md).
+- When adapting Quick Start Python/SAS Studio examples or confusing PROC PYTHON's `SAS` bridge with SASPy, read the [quick-start Python boundary](references/data-exchange.md#quick-start-python-boundary) before choosing the execution interface.
 
 These branches can combine: connection success does not establish code success, and code success does not establish data fidelity.
 

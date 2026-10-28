@@ -2,6 +2,8 @@
 
 Baseline owners: [decisioning tools](https://github.com/sassoftware/sas-mcp-server/blob/v1.19.0/src/sas_mcp_server/tools/decisioning.py), [shared lifecycle](https://github.com/sassoftware/sas-mcp-server/blob/v1.19.0/src/sas_mcp_server/tools/decisioning_lifecycle.py), and [lookup tools](https://github.com/sassoftware/sas-mcp-server/blob/v1.19.0/src/sas_mcp_server/tools/decisioning_lookups.py). Discover the installed schemas first; this reference is not a universal request-body specification.
 
+When reviewing supplied Studio data-grid serialization or lookup-import work, read [Studio decision-data preparation](studio-data-grids-and-lookups.md) for the offline preparation branch; activation policy remains here.
+
 ## Read and specify before writing
 
 Record asset type/ID/folder, full signature, current working and approved locked revisions, rule/step ordering, all referenced assets and lookup tables, and downstream runtime consumers. Read rules as well as their rule set; do not infer behavior from a name or signature. Baseline shared reads can summarise content above 150,000 characters, and list helpers have result limits. A summary is insufficient evidence for a full-content edit/review.

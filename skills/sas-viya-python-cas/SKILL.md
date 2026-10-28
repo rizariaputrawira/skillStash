@@ -20,6 +20,8 @@ SWAT is a CAS client, not a SAS Compute session client. CAS actions run in CAS; 
 
 **Documentation baseline:** independently researched on 2026-10-28 against SWAT **1.18.1** documentation, whose index is dated 2026-06-30, and explicit SAS action-documentation editions. This is not a claim of newest available software, installed support, or live validation. When selecting versions or citing evidence, read [SOURCES.md](SOURCES.md). Viya 3.5 and modern release/cadence identifiers are not interchangeable.
 
+When following the Quick Start videos or translating their Compute/CAS/CASL examples to Python, read the [quick-start learning reference](references/cas-workflows.md#quick-start-learning-reference) before running or adapting the supplied setup programs.
+
 ## 2. Establish a safe connection
 
 Obtain the deployment's actual CAS endpoint, exposed port or HTTPS proxy path, approved authentication route, and trust configuration. A Viya web URL alone does not establish a CAS endpoint.

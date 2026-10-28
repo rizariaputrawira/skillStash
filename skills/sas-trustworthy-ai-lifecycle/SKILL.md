@@ -1,0 +1,21 @@
+---
+name: sas-trustworthy-ai-lifecycle
+description: "Use when preparing or reviewing model-governance evidence, production readiness, or monitoring plans for SAS model projects, including models used in fraud decisioning."
+---
+
+# SAS trustworthy AI lifecycle
+
+For an agent helping model, risk, data and engineering owners produce a traceable governance review. This skill supplies procedure, not approval, certification, credentials or permission to deploy, schedule monitoring, access sensitive data or change a workflow. It works without SAS software for document preparation.
+
+## Workflow
+
+1. **Bind the assignment.** Identify the requested artifact and review stage, model/project ID and revision, intended use, affected people, deployment destination, supplied evidence and permitted effects. Separate model validation from validation of the full decision flow. A rules-only change does not automatically need model training or champion/challenger selection; mark model-only items not applicable with a reason, and route execution work to the actual product interface.
+2. **Record versions and owners.** For document-only work, record model/data/policy revisions and evidence dates. For SAS integration, additionally record the exact product, Viya family, platform release/cadence/patches, Model Manager/Workflow Manager availability and workflow definition version where relevant. Unknown versions block compatibility claims, not an offline review. Assign accountable people or teams for model ownership, model development, deployment, risk, data and domain expertise; one person can hold multiple roles, but do not invent assignments or approvals.
+3. **Build the evidence record.** Read [lifecycle evidence templates](references/lifecycle-evidence.md). Populate only the requested sections using supplied or authorized evidence. Record every applicable item as evidenced, missing, failed, or accepted exception; use not applicable only with a reason. Attach revision-specific evidence locators and dates. An asserted result without supporting evidence is missing, not passed. Reference protected records rather than copying PII, credentials or sensitive transaction payloads into the report.
+4. **Apply the domain branch.** When the model informs fraud detection or decisions, read [fraud review](references/fraud-review.md) before selecting metrics, interpreting delayed labels or accepting evaluation results. These are Skillstash adaptations, not SAS-provided fraud thresholds. Do not invent thresholds, acceptable harm, protected-group policy or business approval.
+5. **Separate readiness from execution.** Report unresolved evidence, failed criteria, accountable owners and any recorded exceptions before a readiness recommendation. A model-owner approval does not prove deployment validation or approve a whole Fraud Decisioning release. When asked to use the SAS-delivered governance workflow, read [Model Manager workflow boundaries](references/model-manager-workflow.md) before proposing an import or activation. Document the plan when prerequisites are unavailable; do not install products to complete a checklist.
+6. **Deliver the requested artifact.** Return scope/revisions, evidence table, readiness disposition, outstanding owner actions and approvals, and monitoring/escalation plan where requested. Distinguish observed results, proposed tests and missing evidence. After an authorized deployment, verify the selected model revision and business-relevant outputs with approved sample inputs; otherwise state that deployment and live monitoring were not exercised. The agent can recommend, but only the designated organization owners can accept risk and approve release.
+
+## Sources and limits
+
+Read [SOURCES.md](SOURCES.md) for source pins, attribution and license boundaries before redistributing or updating the templates. The lifecycle evidence reference adapts SAS documentation under CC BY 4.0; other local files are independently authored guidance with no declared repository-wide license. This is not a current NIST compliance assessment, a regulatory opinion, a SAS product support matrix or proof that an AI system is fair or harmless.

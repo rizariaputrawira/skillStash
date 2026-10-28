@@ -27,6 +27,8 @@ At baseline the MAS module ID is server-generated and **not** the publish name, 
 
 ## Inspect the scoring contract
 
+When mapping tabular/file inputs, validating data grids or reviewing batch/regression scoring, read [MAS input and batch validation](mas-scorer-validation.md).
+
 Use `get_mas_module_step_signature` for the exact returned module and intended step. Verify required input names/types/order, output schema and execution semantics. Baseline `score_data` can map plain names to UI-published trailing-underscore names after a 400 and reports that as `inputs_renamed`; inspect the map, but prefer the actual signature rather than relying on fallback. Check blank/missing values and typed identifiers explicitly.
 
 Scoring invokes code and is withheld in baseline strict read-only mode. Review external calls, persistence or other side effects of the decision/code/model before using even a synthetic test. Do not send real transactions, account data or credentials as a connectivity probe. Code execution and expression compilation are also effects; do not route around a filtered scoring tool through Compute.
