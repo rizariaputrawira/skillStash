@@ -26,7 +26,7 @@ The public documentation index observed on the research date identifies **SWAT 1
 | Terminate | https://sassoftware.github.io/python-swat/generated/swat.cas.connection.CAS.terminate.html | `terminate()` ends the session and closes the connection. |
 | Release notes | https://sassoftware.github.io/python-swat/whatsnew.html | 1.18.1 OAuth updates; 1.18.0 Python 3.14/TK updates; 1.14.0 PKCE; historic API changes. Package features have their own version axis. |
 | SAS-owned repository | https://github.com/sassoftware/python-swat | README and source identity; binary-versus-source distribution distinction. Repository observation is not a pinned release audit. |
-| Upstream licensing statement | https://github.com/sassoftware/python-swat/blob/master/LICENSE.md | Distinguishes Apache 2.0 Python code from bundled TK/C extensions governed by the SAS License Agreement for Corrective Code or Additional Functionality. |
+| Upstream license statement, pinned SWAT v1.18.1 | https://github.com/sassoftware/python-swat/blob/v1.18.1/LICENSE.md | The tagged license identifies Apache-2.0 for SWAT Python source and separate SAS License Agreement terms for bundled TK libraries and C extensions. This skill redistributes neither. |
 
 ## Official CAS action documentation
 
@@ -64,3 +64,7 @@ The **Viya 3.5** action baseline was independently consulted, not inferred from 
 - The documentation is heterogeneous: old conceptual pages contain historical APIs and old TLS troubleshooting examples alongside newer reference pages. This skill uses verified current constructor/result APIs at its stated baseline and explicitly routes legacy/server-specific behavior to matching sources.
 - A small fetched sample is local data and not proof of durability or analytic correctness. Metadata/count/fetch checks are separate actions, not an atomic snapshot. No live performance or access-control outcome is claimed.
 - The package contains original prose and original compact examples, not upstream Python modules, binaries, or copied documentation bodies. The upstream repository's license split is recorded as provenance, not applied to SAS documentation or used to invent a license for this skill. SAS documentation, software licensing, product entitlements, and this repository's own licensing decisions remain distinct.
+
+## License boundary
+
+The SWAT license observation is version-pinned to `v1.18.1` and does not assign a license to SAS Help Center documentation or to this original-prose skill. No SWAT source, wheel, binary, TK library, C extension, copied documentation body or license text is bundled. The Python examples are independently written small recipes, not verbatim upstream examples. This repository does not declare a license for its original texts. The relevant [tagged license file](https://raw.githubusercontent.com/sassoftware/python-swat/v1.18.1/LICENSE.md) includes the separate terms; do not treat SWAT's Apache grant as covering those bundled native components or SAS Viya entitlements.

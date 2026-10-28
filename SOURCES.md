@@ -1,6 +1,6 @@
 # Sources and provenance
 
-The skills are independently authored procedural guidance informed by first-party SAS sources. They do not bundle upstream implementation code, claim SAS endorsement, or inherit an upstream project's license merely by linking it. Referenced projects/documentation retain their own terms. This repository currently declares no license for its original skill texts.
+This repository declares no repository-wide license for its independently authored skill texts. Package-local source records distinguish original guidance from upstream software terms; a link, citation, or source-version observation does not transfer upstream rights or indicate SAS endorsement. The skills contain no bundled upstream implementation code or third-party assets based on the reviewed package contents. Future copied material requires a separate file-level license and notice review.
 
 ## Package-local source records
 
@@ -11,6 +11,20 @@ Each selectable folder carries its own consulted URLs, version observations, and
 | [`sasctl-python`](skills/sasctl-python/SKILL.md) | [Local source record](skills/sasctl-python/SOURCES.md): [SAS python-sasctl](https://github.com/sassoftware/python-sasctl), documentation baseline **1.12.0**, release-tagged source, and model lifecycle references |
 | [`sas-viya-python-cas`](skills/sas-viya-python-cas/SKILL.md) | [Local source record](skills/sas-viya-python-cas/SOURCES.md): [SAS python-swat](https://github.com/sassoftware/python-swat), documentation baseline **1.18.1**, and separate modern/Viya 3.5 CAS action references |
 | [`sas-viya-rest-api`](skills/sas-viya-rest-api/SKILL.md) | [Local source record](skills/sas-viya-rest-api/references/sources.md): [SAS REST catalog](https://developer.sas.com/rest-apis), Logon v1, Compute v24, Job Execution v7, and official platform release documentation |
+| [`sas-viya-agentic-ai`](skills/sas-viya-agentic-ai/SKILL.md) | [Local source/license record](skills/sas-viya-agentic-ai/references/sources.md): [SAS Agentic AI Accelerator](https://github.com/sassoftware/sas-agentic-ai-accelerator), release baseline **2.4.1**, Apache-2.0 except upstream `/static`; no accelerator code/assets bundled |
+| [`saspy-python`](skills/saspy-python/SKILL.md) | [Local source/license record](skills/saspy-python/SOURCES.md): [SASPy](https://github.com/sassoftware/saspy), release **v5.110.0**, release-tagged session/configuration/conversion contracts and separate IOM Java licensing |
+
+## License review snapshot
+
+Reviewed **2026-10-28**, at the cited upstream release baselines. This is a source-level check of the skill folders and upstream license statements, not legal advice, repository-wide licensing, an SBOM, or clearance to copy upstream material.
+
+| Skill | Observed upstream terms | Local package finding |
+| --- | --- | --- |
+| `sasctl-python` | `python-sasctl` **v1.12.0** contains a tagged root Apache-2.0 `LICENSE`; the SAS copyright/NOTICE obligations apply if that software is redistributed. | Original prose and independently authored examples; no package source, notebooks, binaries, license text, or THIRD-PARTY assets copied. Upstream terms do not license this prose. |
+| `sas-viya-python-cas` | `python-swat` **v1.18.1** tagged `LICENSE.md` distinguishes Apache-2.0 SWAT Python code from bundled TK libraries and C extensions under separate SAS License Agreement terms. | Original prose and examples; no SWAT source/wheels, TK/C binaries, or license file bundled. Apache-2.0 does not cover those separately licensed components or SAS entitlements. |
+| `sas-viya-rest-api` | No single package upstream; SAS API documentation and each service have their own terms. The official sources are references, not software dependencies. | Original contract-focused prose and small request examples; no API implementation or verbatim sample payload set bundled. Skill text remains without a declared license here. |
+| `sas-viya-agentic-ai` | Accelerator **2.4.1** README says Apache-2.0 except `/static` SAS-owned material not under an open-source license; model and dependency licenses remain separate; Viya commercial terms apply. | Original prose; no accelerator source, model, static logo, generated content package, third-party library or upstream license text bundled. |
+| `saspy-python` | SASPy **v5.110.0** root license separates Apache-2.0 Python code from IOM Java Client JARs under SAS terms; bundled third-party Java content has its own notice/license alternatives. | Independently authored guidance and compact examples; no upstream source, JARs, notebooks, assets or documentation bodies bundled. See the package-local record for exact evidence and limits. |
 
 ## Version evidence
 
