@@ -1,0 +1,44 @@
+# Select BOSS inputs, processors and outputs
+
+Load when choosing an action, format conversion, broker/file integration, batch grouping or cache pattern beyond the basic HTTP enrichment workflow. Source: *SAS Business Orchestration Services: User’s Guide*, **2026.03**, May 5, 2026, `v_032-P3:eopug`, chapters3–5, printed pp11–224. This original action-family reference does not reproduce every source parameter/table/example. Those items remain individually pending in the local coverage inventory until reconciled; a family appearing here is not a full-manual signoff.
+
+Use [BOSS orchestration](boss-orchestration.md) for project assembly/deployment and authority, [expression language](boss-expression-language.md) for mappings, and [schema contracts](boss-schema-contract.md) for configuration validation. Match product cadence and action version before operation. Bind real schemas/endpoints, identity, success/error policy, ordered versus parallel behavior and external effects before constructing a flow.
+
+## Choose each stage deliberately
+
+| Surface | Selection and consumer-visible checks |
+| --- | --- |
+| AMQP0.9 / AMQP1.0 input/output | Match the actual protocol, queue/source/target address, exchange/routing key, acknowledgement/settlement, TLS and authentication contract. Passive declaration is not provisioning ownership. Retain broker IDs and redelivery evidence; broker success is not exactly-once business completion. |
+| Kafka input/processor/output | Separate consumption from publishing. Bind addresses/topics/group and actual security policy; map headers via the supported metadata fields rather than guessing all headers survive. Verify selected prefixes, values, duplicate/redelivery behavior and destination. A processor publish can be an external effect before the rest of the flow completes. |
+| File/socket input | Choose the scanner matching actual framing: line, CSV, regex or fixed-size chunks as supported. A socket byte stream has no implicit transaction boundary. For file deletion-on-finish or archive movement require explicit data-retention authority and observe terminal consumption before cleanup. |
+| File/socket output | Choose overwrite/all-bytes versus append/line framing deliberately. A successful write can replace existing content; bind task-owned destination and expected count/format. Do not treat output creation as safe on an arbitrary mounted filesystem. |
+| Cloud object storage | AWS S3 and Azure Blob actions have distinct credentials, container/bucket and object-path contracts. Treat input download/delete and output upload/overwrite as separate effects. No example access key or connection string belongs in a project committed to source control. |
+| Generate | Bound count and interval for a synthetic fixture. It creates messages, not customer transactions; do not run an unbounded generator against a production detection path. |
+| HTTP input/output/client | Input accepts a request; `response` returns to that request; output `httpServer` exposes a retrieval endpoint; `httpClient` sends results externally. These are not interchangeable. Establish status/body/TLS/authentication and exact paths separately. |
+| `map`, `branch`, `parallelBranch` | A mapping can replace or drop data. A branch constructs an isolated request, runs child processors and merges through `resultMap`; an empty merge is not enrichment. Parallel work must not race dependent state or imply preserved order. |
+| `try`, `catch`, `switch` | `try` skips its remaining children after failure, not the rest of the flow. `catch` runs on failed messages and clears their error state on exit. `switch` runs only the first matching case; an unconditional case is a default that must be ordered deliberately. Configure failure HTTP status explicitly. |
+| `pack`, `unpack`, `forEach`, `parallelBatch`, `groupBy`, `groupByValue` | Separate message batches from nested object arrays. `unpack` creates messages from a JSON array; nested lists need explicit traversal at each level. `groupBy` separates matching queries and a residual group; do not assume a processor can be configured for the unmatched group. `groupByValue` evaluates a per-message key. Parallel-batch processing requires batching and does not preserve order. |
+| `cacheLocal`, `cacheRedis` | Distinguish process-local lifetime from external Redis persistence. Specify operation/key/value/expiry and explicit miss/error policy. A cache miss is not a low-risk enrichment result. Preserve transaction fields across get/set mapping and check actual prefix/database/TLS settings. |
+| SQL processor | Supported database families include MySQL, PostgreSQL, SQLite, MS SQL and Oracle in this edition. Use parameterized `argsMapping` and the driver's parameter conventions; do not interpolate customer values into SQL. Inspect `_sql.columns` and `_sql.rows` enrichment and zero/multiple-row cases. A query can have write effects; authorize the actual statement. |
+| SMTP/content templates | Resolve approved sender/recipient lists, subject/body/templates, authentication and TLS. Template content generation is not email-send authorization. Protect sensitive fields and test with approved synthetic recipients only when separately authorized. |
+| Sleep/log/compress | Delay consumes the end-to-end time budget; logs can expose messages; compression changes bytes/encoding. Specify units, disclosure scope and matching decoder. None proves a fraud decision or successful fulfillment. |
+| Visual Investigator actions | `sviAlert`/`sviIndex` are marked experimental in the action guide. Require actual product support, entity/alert schemas and operation authority; do not infer case-management readiness from a configured action. |
+| Drop/stdout/response | Drop produces no output; stdout may expose full messages; response returns final payload. Dropping is not a delivered rejection or external rollback. |
+
+## Convert formats without silently changing meaning
+
+- **Ion ↔ JSON:** bind target types and preserve the original representation where the action documents it. Ion has types JSON lacks; inspect the round-trip rather than assuming lexical representation, binary data, timestamps or exact numeric types are unchanged. Conversion does not validate the resulting Detection message schema.
+- **ISO8583 ↔ JSON:** the guide covers1987/1993/2003, uses the message type indicator to identify the version and supports particular ASCII data/bitmap representations. Use the actual selected/custom specification and variable-length field rules. A generic ISO name does not prove compatibility with a bank's dialect. Verify bitmaps, lengths, encoding and reverse conversion on synthetic boundary messages.
+- **Avro ↔ JSON:** Avro input is binary, not its JSON or single-object encoding. JSON→Avro is marked experimental and requires explicit native numeric casts matching the Avro schema. Verify int/float bounds and schema resolution; a JSON number alone does not establish the Avro type.
+- **XML→JSON:** choose attribute/text/list/type-conversion semantics intentionally and validate downstream paths. Generic XML conversion does not establish business-required fields or schema validity.
+- **Compression:** select the action's documented algorithm and matching downstream encoding. Action and expression-method algorithm sets are not automatically identical.
+
+## Workload and examples as acceptance patterns
+
+Choose shared-workload boundaries for scaling/failure isolation. Bind environment-variable interpolation and supported project-file/mapping/template locations to the deployment method. UI-managed workloads have their own fixed port/TLS requirements; do not carry a manually deployed worker example into that route.
+
+Treat the manual's examples as patterns to reconstruct with original synthetic inputs, not production projects: nested-list traversal; ISO parsing/custom specs; cache found/missing; Ion round trips; batch grouping; SMTP template generation; SQL argument mapping; Kafka header round trip; Detection request/response; required variable sets; and explicit Avro numeric conversion. For each selected pattern retain input, stage transformations, expected keys/types/counts, error route and allowed effects. A required child variable-set check can be skipped when its optional parent is absent; test both parent-absent and parent-present cases. Never claim that merely reading the example exercised it.
+
+## Finish and recover
+
+Validate the project with the matching supported schema/editor, then run approved synthetic cases only with authority. Record selected action versions, configuration identity, expected/observed outputs and external-effect IDs. On mapping/validation error repair the contract without fabricating a fallback. On broker/provider timeout inspect actual destination/state before replay. Preserve failed evidence; a corrected project does not reverse already published messages, database writes or contacts.

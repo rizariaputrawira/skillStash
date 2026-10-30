@@ -34,6 +34,11 @@ Research date: **2026-10-28**. Inspected release **v1.19.0**, published **2026-1
 - **Publication:** v1.19.0 changes the code target to MAS; `PathID` may be empty compared with the prior path. Upstream reports its own live comparison; that is not evidence that this repository or the user's environment was tested.
 - **MCP transport/tool schemas:** renaming and host-side exposure/caching can differ from repository names; live discovery remains mandatory. The built-in login helper's documented Viya 2022.11+ applicability is not an all-tools compatibility statement. Upstream says the new decisioning work was probed on Viya 2026.09; that is not a general minimum or certified matrix.
 
+## Fraud strategy boundary clarification
+
+On **2026-10-30**, the entrypoint added a pre-tool strategy-evidence check: classification/schema, organization/project, profile update timing and rule phase do not automatically map to Intelligent Decisioning/MAS operations. This is an original review safeguard informed by slides **6–9, 27–37 and 41** of the supplied `.sources/archive/partially-reviewed/Others/SAS FD - High-level Enablement.pptx`, SHA-256 `009aab6a79d48cb93220a12f9ae464f33990c04696b2b082368248e621401b24`. Only extracted text and available notes supported this package's original synthesis; screenshots/media were not inspected for it. The deck has SAS reserved-rights notices and no redistribution license was established; no slide/code/media content is incorporated. Its deployment version is unknown, and it does not renew MCP/API compatibility baselines. The source is a provenance locator, not a package dependency, and remains partially reviewed.
+
+
 ## Licensing and incorporation
 
 | Material | Role / version | Evidence and boundary |

@@ -4,7 +4,7 @@
 
 This package is independently authored procedural guidance with compact original synthetic examples. Sources were consulted for factual contracts, not copied as manual text, tutorial code or assets. SAS documentation retains its own copyright and terms; links and factual consultation do not grant redistribution rights in those materials. No new license grant is made for this package. No community or AI-generated knowledge index is an authority here. No credentials, PII or customer examples are included.
 
-All sources below were consulted **2026-10-28**. A consulted edition is evidence for bounded technical claims, not a tested installation compatibility matrix. No SAS execution, host discovery, installation or deployment was exercised during authorship.
+The official sources in the table below were consulted **2026-10-28**; the separately identified local deck was reviewed **2026-10-30**. A consulted edition is evidence for bounded technical claims, not a tested installation compatibility matrix. No SAS execution, host discovery, installation or deployment was exercised during authorship.
 
 |Official source and exact URL|Edition/date actually observed|Used for and limits|
 |---|---|---|
@@ -15,6 +15,16 @@ All sources below were consulted **2026-10-28**. A consulted edition is evidence
 |[SAS Visual Statistics: Programming Guide PDF](https://documentation.sas.com/api/collections/pgmsascdc/v_072/docsets/casactstat/content/casactstat_sas.pdf?locale=en)|Retrieved cover **2026.01–2026.04***, **April 16, 2026**; locator `v_072`|Chapter 22 Regression Action Set, genmod parameter syntax, resource controls including CPU maxTime, model storage, and genmodScore restore/score example at printed pp.1346–1348; distinct glm/logistic actions. Not target entitlement, client setup, all action options, persistence or publishing evidence. The source was downloaded because the reader's remote-size limit prevented direct conversion; the local downloaded PDF was read.|
 |[glm action HTML locator](https://documentation.sas.com/doc/en/pgmsascdc/v_072/casactstat/cas-regression-glm.htm?fromDefault)|Help Center application shell only when read; search result labeled 2026.02|Discovery locator, not substantive parameter evidence. The PDF cover above is the actually inspected edition; the search banner does not override it or establish installed version.|
 
+## Local fraud-decisioning enablement evidence
+
+- Source locator: `.sources/archive/partially-reviewed/Others/SAS FD - High-level Enablement.pptx` (repository-local provenance locator in plain code, not a required package dependency). A standalone copy of this package does not need the deck to follow its procedure; source reinspection requires an authorized copy.
+- SHA-256: `009aab6a79d48cb93220a12f9ae464f33990c04696b2b082368248e621401b24`.
+- Observed metadata: 67 slides; modified `2026-06-01T04:19:17Z`. Reviewed **2026-10-30** using extracted slide text and available speaker notes only. Images, screenshots and embedded media were not inspected.
+- Exact range used: slides **27–37** (`ppt/slides/slide27.xml` through `slide37.xml`) for message-keyed entity profiles, rule-updated profile values, raw/aggregate/default/empty states, and model scores consumed alongside profile/list logic; slides **53–56** (`ppt/slides/slide53.xml` through `slide56.xml`) for the analytical packaging/lifecycle context. Slides 53–54 provide high-level process/lifecycle text; slides 55–56 provide only development/model-card walkthrough titles in the inspected extraction, not substantive walkthrough contracts.
+- Claim boundary: the deck motivates the independently authored offline fraud-engine handoff checks. Point-in-time feature reconstruction, label maturity, explicit score scale/event/direction, transformation ownership, artifact digests and synthetic boundary fixtures are original procedural safeguards, not quoted deck guarantees. The deck's example score comparison does not establish a universal probability, range, threshold or supported syntax.
+- Version boundary: metadata and conceptual diagrams are not installed FD/SCR versions, engine execution-order evidence, accepted model-package specifications or current support matrices. No universal FD/SCR package compatibility, SAS/Python/R export parity or target loadability is claimed. Reopen target-specific official documentation before making such a technical claim. No new public source was used for this branch.
+- Rights boundary: SAS all-rights-reserved notices were observed; no redistribution license for the deck was established. No slide bodies, example rule code, screenshots or media are reproduced. New guidance and fixtures use original prose. A separate additional slide deck was unreadable and skipped; no claims rely on its contents.
+
 ## Maintained claim ownership
 
 - `SKILL.md` owns the stable modeling sequence, authority boundary and evidence result.
@@ -22,5 +32,6 @@ All sources below were consulted **2026-10-28**. A consulted edition is evidence
 - `references/model-studio.md` owns the consulted edition's UI/metadata/comparison claims and propagation caveats.
 - `references/procedure-modeling.md` owns the historical procedure syntax example and target checks.
 - `references/cas-modeling.md` owns the consulted CAS action example, artifact distinctions and technical uncertainty branches.
+- `references/fraud-engine-handoff.md` owns the conditional offline fraud-engine feature/label/score and export/package acceptance procedure, synthetic contract probes and handoff result fields; it extends rather than duplicates the general development/evaluation procedure.
 
 Reopen the owning official reference and record its actual edition before changing a version-sensitive claim. Unknown target information permits methodology but blocks unestablished syntax/operation claims; unsupported requires target-specific negative evidence. Keep source dates, document collection IDs, installed runtime evidence and observed verification distinct.

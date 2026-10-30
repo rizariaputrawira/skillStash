@@ -1,6 +1,6 @@
 # Sources, attribution and limits
 
-Research snapshot: **2026-10-28**. This folder is standalone; no sibling skill or root document is required. Repository pins identify consulted source, not installed software or a newest-version/support claim.
+Research snapshots: **2026-10-28** (existing lifecycle/workflow/KPI sources) and **2026-10-30** (supplied Fraud Decisioning enablement deck). This folder is standalone; no sibling skill, source deck or root document is required. Repository pins identify consulted source, not installed software or a newest-version/support claim.
 
 ## Material and license map
 
@@ -26,6 +26,20 @@ Separate workflow reference: [Model Management Resources sample README](https://
 Fraud KPI reference: [Fraud Ops README](https://github.com/sassoftware/model-management-resources/blob/6707023b6f1d43264a65a24cd974e04537296b67/samples/KPI/Fraud-Ops/README.md), [SAS implementation](https://github.com/sassoftware/model-management-resources/blob/6707023b6f1d43264a65a24cd974e04537296b67/samples/KPI/Fraud-Ops/example-custom-kpi-fraud-ops.sas) and [root license](https://github.com/sassoftware/model-management-resources/blob/6707023b6f1d43264a65a24cd974e04537296b67/LICENSE), commit **`6707023b6f1d43264a65a24cd974e04537296b67`**. README/license identify Apache-2.0; inspected calculation, scoring/table effects and registration inform original guidance. No SAS program, model, data, workflow archive or documentation body copied. The workflow comparison pin is the same source identity, not evidence of a prior KPI incorporation.
 
 Official versioned evidence: [MMKPI overview](https://documentation.sas.com/doc/en/mdlmgrcdc/v_072/mdlmgrmacro/n1hxfrao8vie6an16l8qo6uwvuxl.htm) and [addCustomKPI](https://documentation.sas.com/doc/en/mdlmgrcdc/v_072/mdlmgrmacro/p0eh2idlbss5wgn1dvyjlx3efugb.htm), edition `v_072`, updated 2026-08-28, explain action-set definition, project KPI data/columns and tracking fields. This documentation edition is not an installed-release identifier or certified sample compatibility matrix. Official text is linked, not reproduced or relicensed; no CAS/registration execution occurred.
+
+### Supplied Fraud Decisioning enablement deck
+
+Source: `.sources/archive/partially-reviewed/Others/SAS FD - High-level Enablement.pptx`, 67 slides; SHA-256 **`009aab6a79d48cb93220a12f9ae464f33990c04696b2b082368248e621401b24`**. File metadata records modification on **2026-06-01**; this is not a product release identifier. Text and speaker-note extraction was consulted on **2026-10-30**; embedded media, screenshots and their detailed contents were not inspected for this package's original synthesis. The source is research material, not a required package dependency, and remains partially reviewed.
+
+The independently authored release/feedback procedure in `references/fraud-review.md`, reached from the domain branch in `SKILL.md`, uses these conceptual observations:
+
+- Slide **41** distinguishes rule development/testing, approval and deployment-related states; the local procedure asks for distinct evidence instead of prescribing those states as a current runtime contract.
+- Slides **44–46** describe alert servicing, message-level markings, asynchronous posting, audit history, customer contact and analyst actions. These motivate separation of feedback stages, reviewed-population selection and separately authorized customer actions; local evidence fields and review criteria are original governance guidance.
+- Slide **49** lists queueing, stand-in responses and timeout capabilities. It motivates requests for actual response/fulfillment evidence, not claims about guarantees or deployment configuration.
+- Slides **53–54** describe model preparation, tagging, lifecycle governance and strategy/version comparison. They inform separation of model evidence from decision-release readiness, without adding training, publishing or retraining instructions.
+- Slides **59–62** identify example reports, management dashboards, application attack and fraud-rule impact analysis. Extracted text gives titles only; no report formulas, dashboard values, cohorts, denominators or measured performance were established. The comparison evidence requirements are original review procedure, not extracted SAS report definitions.
+
+The deck contains SAS all-rights-reserved notices; no redistribution license was established. No slide bodies, rule code, screenshots or media are incorporated. This source does not alter the CC BY 4.0 status or notices of `references/lifecycle-evidence.md`, which remains unchanged. The deck's product/deployment version is unknown: conceptual enablement evidence does not establish current support, interfaces, lifecycle transitions, asynchronous delivery guarantees or authorization semantics. No live SAS effects or measured results were exercised. The separate `SAS FD - High-level Enablement - Additional Slide.pptx` was unreadable and skipped as authorized; it contributes no evidence.
 
 ## Refresh and verification limits
 
