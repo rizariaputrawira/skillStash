@@ -15,6 +15,8 @@ Record the exact SAS product and installed release: **SAS Fraud Decisioning is n
 
 Identify the requested stage, acceptance cases, target folder, asset IDs/revisions, downstream consumers and permitted effects. Keep inspection, compilation/testing, authoring, revision locking, lookup activation, publication and scoring distinct. A request to review fraud logic does not authorize creating a decision, running customer transactions or publishing into production. Unknown product support blocks a compatibility claim or dependent remote action, not offline specification/code preparation.
 
+For Fraud Decisioning, obtain classification/schema, organization/project, profile state/update order and rule-phase-to-runtime evidence from the supplied strategy specification before mapping it to tools. Do not treat Intelligent Decisioning rule sets/lookups or MAS publication as automatic equivalents of Fraud Decisioning rules/lists or deployment. If the task is strategy design rather than tool execution, prepare the product-specific specification offline; MCP availability is not a prerequisite for that work.
+
 ## 2. Discover before choosing a tool
 
 Read [discovery and access](references/discovery-and-access.md) before live discovery or any MCP call. Use the host's actual available MCP discovery interface to inspect the configured server's tools, descriptions, input schemas and annotations; verify endpoint/identity from approved non-secret evidence. Do not invent a tool route, guess a schema from this skill, or claim a repository link has connected the server.

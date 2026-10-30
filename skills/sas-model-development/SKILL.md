@@ -1,6 +1,6 @@
 ---
 name: sas-model-development
-description: "Develop and evaluate SAS classification, regression, or applicable unsupervised models; load for leakage-safe experiments, Model Studio pipelines, procedure or CAS modeling, and scoring evidence."
+description: "Develop and evaluate SAS classification, regression, or applicable unsupervised models; load for leakage-safe experiments, Model Studio pipelines, procedure or CAS modeling, scoring evidence, and offline fraud-engine model handoffs."
 ---
 
 # SAS model development
@@ -19,6 +19,7 @@ Use this skill to turn an analytical objective into a reproducible development/e
    - When using CAS analytical actions, read [CAS modeling](references/cas-modeling.md) before selecting action contracts or artifacts.
 6. **Select, then evaluate once.** Compare candidates on identical eligible observations/weights, objective, event definition, units, and validation protocol. Choose metric and threshold by operational objective; do not equate accuracy, ranking, probability quality, or business utility. Lock the candidate, transforms and threshold before final test. Report uncertainty, subgroup/time behavior, excluded cases and baseline comparison. If test results drive another model change, disclose that test is now development evidence; obtain a genuinely untouched assessment set or qualify the result.
 7. **Check scoring consistency and deliver evidence.** Check input schema/types/formats, units, category mapping, missing/unseen levels, feature availability and frozen transformation order. Compare development and exported/restored scoring on keyed synthetic/approved cases using a declared tolerance and decision-boundary checks. Score agreement on sampled cases is not a guarantee of zero distortion, generalization, fairness, or production readiness. Return the evidence packet below; separate any authorized handoff from model development.
+   - When preparing a model for a fraud engine that consumes message/profile features or exposes scores to rules, read [offline fraud-engine model scoring handoff](references/fraud-engine-handoff.md) before assessing point-in-time compatibility, export/package parity or score interpretation. Return a source-checked handoff, not production approval.
 
 ## Required result
 
