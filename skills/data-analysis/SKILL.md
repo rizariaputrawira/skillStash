@@ -5,7 +5,7 @@ description: "Analyze supplied data or results to answer business questions, rec
 
 # Data analysis
 
-For an analyst turning a question into a defensible finding from supplied files, tables, SQL/pandas/SAS results, or offline evidence. Own the analysis, not general ML training, database-pipeline engineering, or service/session execution.
+For an analyst turning a question into a defensible finding from supplied files, tables, SQL/pandas/SAS results, or offline evidence. Own the question, metric definition, calculation and interpretation. SQL can support that answer, but a query-only implementation or diagnosis does not require this whole workflow. Checking the analysis being produced is quality control, not an independent readiness disposition of supplied work. General ML training, database-pipeline engineering and service/session execution remain outside this workflow.
 
 ## Authority and evidence
 

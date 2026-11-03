@@ -2,9 +2,9 @@
 
 **Standalone skills for data analysis, SAS modeling and software integrations.**
 
-Optional AI-agent guidance for analytical questions, SQL, analysis review, SAS programming and model development, plus SAS/Viya service integrations, decisioning and model governance. Each folder works independently of KitShift, Leanflow and the other skills in this repository.
+Optional AI-agent guidance for analytical questions, SQL, analysis review, SAS programming and model development, plus SAS/Viya service integrations, decisioning and model governance. Each skill folder works independently of the other skills in this repository.
 
-This is a skill collection, not a coding-agent runtime, workflow suite or Git cherry-pick mechanism. It does not install SAS clients, connect services or grant deployment access.
+This is a skill collection, not a runtime or an installer. It does not install SAS clients, connect services or grant deployment access.
 
 ## In this guide
 
@@ -34,7 +34,7 @@ Skills supply procedures, not guarantees of agent compliance, product compatibil
 
 ### 1. Get the collection
 
-Clone the repository or download the skill folder you want:
+Clone the repository or obtain the skill folder you want. The original skill texts have no declared repository-wide license; review the [licensing information](#documentation-sources-and-licenses) before reuse or redistribution.
 
 ```sh
 git clone https://github.com/rizariaputrawira/skillstash.git
@@ -63,7 +63,7 @@ The selected `SKILL.md` defines the core workflow and points to specialized refe
 
 Choose by execution surface: `sasctl` integrates with Viya services; SWAT runs CAS actions; SASPy runs SAS code through a SAS session, including Viya Compute or SAS 9.4 Workspace Server; `wbctl` controls a separate SAS Workbench installation and its jobs/resources; the accelerator adds its own Model Definition Builder and content workflows. These are not interchangeable clients or runtimes. REST guidance also applies outside Python.
 
-Analysis and implementation are different invocation surfaces. `data-analysis` owns question-to-evidence analysis; `data-sql-analysis` owns analytical query correctness; `data-analysis-review` reviews supplied evidence without silently changing it. `sas-programming` owns SAS program correctness and `sas-model-development` owns analytical model development. None requires a sibling skill, supplies a connection, or turns model selection into permission to publish.
+Choose analytical guidance by deliverable. `data-analysis` owns question-to-findings work, including checks on the analysis being produced; `data-sql-analysis` owns query implementation/diagnosis and query-correctness evidence, even when no broader analysis is requested; `data-analysis-review` independently dispositions supplied evidence and leaves artifacts unchanged. Recalculation during review supports findings, not permission to repair the analysis. `sas-programming` owns SAS program correctness and `sas-model-development` owns analytical model development. None requires a sibling skill, supplies a connection, or turns model selection into permission to publish.
 
 ### MCP integrations
 
@@ -74,7 +74,7 @@ For agent-operated decisioning work, inspect the tools of an already configured 
 Inspired by [Matt Pocock's skills collection](https://github.com/mattpocock/skills): individually selectable guidance, not a framework that owns the user's workflow.
 
 - **One distinct task per skill.** Create a standalone skill for a genuinely different trigger; extend an existing reference when the task already has an owner.
-- **Independent selection.** Keep each folder self-contained, with no Kitshift, Leanflow or sibling-skill requirement.
+- **Independent selection.** Keep each folder self-contained, with no sibling-skill requirement.
 - **Small entrypoints, conditional detail.** Put the core procedure in `SKILL.md`; load specialized references and templates only when relevant.
 - **Actionable guidance.** Turn supported source evidence into usable procedures; an upstream repository does not automatically warrant a new skill.
 - **User-controlled effects.** Selecting a skill does not authorize installation, authentication, deployment or administrative changes.
@@ -107,7 +107,7 @@ For vendor-neutral skills, use a descriptive domain such as `data-`; do not forc
 | [`sas-saspy-python`](skills/sas-saspy-python/SKILL.md) | Run SAS programs from Python through Viya Compute or SAS 9.4 sessions; validate logs, dataset transfers and session cleanup |
 | [`sas-workbench-cli`](skills/sas-workbench-cli/SKILL.md) | Orchestrate SAS Workbench job definitions, schedules and executions with `wbctl`; verify outcomes and manage environments/storage only when authorized |
 | [`sas-viya-decisioning-mcp`](skills/sas-viya-decisioning-mcp/SKILL.md) | Use discovered SAS MCP tools for supported decisioning assets, rules, lookup versions, MAS publication and business-result verification; check exact Fraud Decisioning applicability |
-| [`sas-fraud-decisioning`](skills/sas-fraud-decisioning/SKILL.md) | Practical SFD workflows: classifications, schemas, profiles, rules/lists, testing and deployment, BOSS orchestration, alert triage, reporting, model handoff and SFM migration |
+| [`sas-fraud-decisioning`](skills/sas-fraud-decisioning/SKILL.md) | Practical SFD workflows: classifications, schemas, profiles, rules/lists, testing and deployment, BOSS orchestration, alert triage, reporting, model handoff acceptance and SFM migration |
 | [`sas-trustworthy-ai-lifecycle`](skills/sas-trustworthy-ai-lifecycle/SKILL.md) | Prepare model-governance evidence, production-readiness reviews and monitoring plans, with fraud-specific review guidance and separate owner approval |
 
 ### Example requests
@@ -134,7 +134,7 @@ These stay within existing owners, without requiring upstream application instal
 - **Decisioning:** MAS input/batch validation and Studio data-grid/lookup preparation. Example: “Use `sas-viya-decisioning-mcp` to preflight supplied MAS batch rows and Studio lookup inputs offline; do not score, import or activate.”
 - **Lifecycle:** Model Manager Fraud Ops KPI review. Example: “Use `sas-trustworthy-ai-lifecycle` to prepare a custom fraud KPI calculation and registration plan from synthetic mature-label evidence; do not run CAS or register it.”
 - **REST:** content-promotion mapping and SCR testing only when that runtime is explicitly selected. Example: “Use `sas-viya-rest-api` to review a DEV-to-UAT content manifest offline, and load SCR testing only if our selected artifact uses SCR; do not authenticate, migrate or start containers.”
-- **Fraud enablement:** the SFD package owns practical product workflows and strategy-to-runtime verification; model development adds a fraud-engine scoring handoff, and lifecycle adds alert-feedback/rules-only governance review. Procedures use supplied official manuals and enablement slides, with package-local editions and limitations—not copied walkthroughs or deployment guarantees.
+- **Fraud enablement:** model development owns the producer's feature/label/transform/artifact and offline-parity packet; SFD owns receiving that evidence, target mapping, engine acceptance and strategy-to-runtime verification. SFD prepares operational release evidence; lifecycle independently dispositions supplied release/alert-feedback evidence and records required owner actions without designing or executing the release. Missing handoff evidence remains an explicit gap, not a requirement to install a sibling skill. Procedures retain package-local official-source editions and limitations—not deployment guarantees.
 
 For Studio step-access administration, the REST skill contains a conditional reference with non-public API, group-mapping and cleanup warnings; no upstream automation is bundled. The lifecycle skill is a governance/documentation surface, not another SAS execution client or permission to deploy.
 
@@ -150,7 +150,7 @@ Keep credentials, tokens and raw customer/transaction data out of prompts, examp
 
 Update the checkout, review the changed skill and its local source record, then deliberately replace the copied package in your host's skills location. There is no managed updater or automatic synchronization; preserve local edits before replacing a copy.
 
-Local research inputs under `.sources/` are ignored by Git and are not required by copied skill folders. `.sources/archive/README.md` and `manifest.json` now identify `partially-reviewed/` sources separately from local inputs under `not-yet-used/` whose content is not yet reviewed. The former `used/` label was retired because selected consultation is not full-document coverage. `.sources/archive/coverage/` records source inspection, section/reference-item inventory and remaining semantic/visual/media gaps; no source is fully reviewed merely because it informed a skill. Keep package-local provenance with copied skills; source locators grant no redistribution rights.
+Research inputs are not distributed with the skills. Consult the [source index](SOURCES.md) and each package's source record for the materials reviewed, their limitations and applicable rights.
 
 If a skill is not discovered, check the host's documented skill location, metadata requirements and loading interface. If a SAS operation is unavailable, distinguish client/tool exposure, target product/release support and actual permissions. Installing more skills does not resolve those deployment facts.
 
@@ -167,19 +167,17 @@ There is no single “SAS Viya version” that guarantees every integration work
 
 Select release-matched official documentation and verify the target's capabilities before relying on an operation. An API catalog's highest version, a package badge, a documentation collection identifier, and today's date are not deployment compatibility evidence. Unknown facts must remain explicit.
 
-**Version-neutral procedure, version-bound technical claims.** The new SAS programming and model-development entrypoints keep stable decision and verification steps in the core, with task-based references declaring their documented product, runtime and release applicability. Select references against the target evidence before using syntax, options or UI steps. A consulted release is not automatically supported on adjacent releases. Unknown or mismatched versions block only the dependent compatibility claim or operation; safe offline preparation can continue. Distinguish documented behavior, observed capability and exercised results, and distinguish unverified from unsupported. Each package retains its own rules and source record so it remains usable alone.
+**Version-neutral procedure, version-bound technical claims.** The SAS programming and model-development entrypoints keep stable decision and verification steps in the core, with task-based references declaring their documented product, runtime and release applicability. Select references against the target evidence before using syntax, options or UI steps. A consulted release is not automatically supported on adjacent releases. Unknown or mismatched versions block only the dependent compatibility claim or operation; safe offline preparation can continue. Distinguish documented behavior, observed capability and exercised results, and distinguish unverified from unsupported. Each package retains its own rules and source record so it remains usable alone.
 
 The integration/analysis reference snapshot was researched on **2026-10-28**; the SFD how-to and fraud-handoff/governance enrichment was researched on **2026-10-30**. Source versions describe what was consulted, not a promise of newest-release support. See [SOURCES.md](SOURCES.md) and the sources reference inside each package.
 
 ## Verification and known limits
 
-Package structure, frontmatter, relative links and local examples can be checked offline. Source-loaded synthetic exercises can check how an agent follows a branch, but do not establish a universal behavior guarantee.
+Offline checks have covered package structure, frontmatter, relative links, examples and selected boundary cases. Isolated, source-loaded exercises covered analysis, SQL, SAS programming, model development, Fraud Decisioning preparation and model-governance review. The BOSS fixture's JSON Schema was checked with valid and invalid cases; BOSS expressions and HTTP/runtime behavior were not executed. These bounded exercises do not establish generalized agent reliability.
 
-For the five analysis/programming/model-development additions, the **2026-10-28** offline check covered 28 Markdown files, frontmatter names/descriptions, 99 relative file/fragment links across the new packages and root catalog/source index, four fenced examples, and numerical boundary cases. Five fresh source-loaded exercises used isolated package copies: matched-period analysis, a read-only SQLite join/denominator correction, weighted-average/causal-claim review, source-bound SAS MERGE reasoning, and a Model Studio leakage/partition/version review. Their expected results were observed and package/fixture hashes remained unchanged. The SAS examples and PostgreSQL example were not executed; these bounded exercises do not establish generalized agent reliability or native host discovery.
+The ownership-boundary clarification was exercised on seven synthetic offline tasks against both pre-change and revised guidance, plus three revised-guidance probes for missing model packets, new monitoring plans and explicit KPI preparation. Both versions met the seven shared task requirements; no reliability improvement is claimed. Actors loaded actual entrypoints and conditional package-local references and returned task artifacts without live execution. These exercises did not test native host discovery or OS isolation.
 
-For the **2026-10-30 SFD enrichment**, offline checks covered 34 Markdown files across four affected packages and the root catalog/source index, four frontmatter/source records, 125 relative file/fragment links, one JSON fence and one YAML fence. All four affected packages were copied and their relative links checked in isolation. The BOSS fixture's embedded JSON Schema accepted two valid cases and rejected four missing/type/range cases; BOSS expression evaluation and HTTP/runtime behavior were not executed. Three fresh consuming-agent exercises read only an isolated SFD package and produced the expected asset/rule/list/deployment, BOSS, and alert/report/migration preparation results. A separate source-loaded model-handoff/governance exercise identified timing/transform mismatches, unsupported probability/recall claims and missing release/action authority. After the isolated SFD exercises, all 34 original Markdown hashes and 32 copied-package Markdown hashes remained unchanged. These bounded exercises are not generalized agent-reliability or live-SAS evidence.
-
-The subsequent **source-coverage correction** retired the ambiguous `used/` archive label. Verification covered 44 Markdown files, 171 relative file/fragment links, four package frontmatters and JSON/YAML parsing; all 24 source files retained their recorded sizes and SHA-256 hashes. Archive/status and pending-item queries were exercised against the actual JSON records. The records keep ten files partially reviewed and fourteen without substantive local review, with zero fully reviewed; extracted-text reads and partial visual/frame inspection do not complete semantic incorporation. Added functional references are structurally checked, but no new independent consuming-agent or live-SAS verification is claimed for those branches.
+The source review remains partial: extracting text or inspecting selected visuals does not establish that every source table, example or media component was reviewed or incorporated. See the [source index](SOURCES.md#fraud-decisioning-enablement-enrichment) and package-local records for scope and limitations.
 
 **Not established by those checks:** native host discovery, SAS authentication, permissions, deployed-product compatibility, CAS actions, model deployment, Compute jobs or end-to-end Fraud Decisioning behavior. Live workflows require an authorized environment. The invocation examples above are not evidence that a host discovers the skills or that a live SAS workflow has been tested.
 
@@ -199,4 +197,4 @@ For host discovery or SAS deployment problems, consult the relevant host documen
 
 The skills contain independently authored procedural guidance informed by official analytical-tool/statistical references and SAS documentation/projects, plus an explicitly attributed **CC BY 4.0 adaptation** in the lifecycle skill's [evidence templates](skills/sas-trustworthy-ai-lifecycle/references/lifecycle-evidence.md). They do not bundle upstream implementation code or third-party binaries/media, and imply no vendor endorsement. Referenced materials retain their own terms.
 
-This repository declares **no repository-wide license** for its original skill texts. The adapted file's stated license is a specific exception, not a license for all other files. Consult the package-local source record before copying or adapting additional upstream material.
+This repository declares **no repository-wide license** for its original skill texts. The adapted file's stated license is a specific exception, not a license for all other files. Before copying, adapting or redistributing original material, obtain appropriate permission from the rights holder; consult the package-local source record for file-specific terms and notices.

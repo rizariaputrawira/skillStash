@@ -5,7 +5,7 @@ description: "Write or review analytical SQL when joins, metric denominators, da
 
 # Analytical SQL
 
-For an analyst or developer producing a query, result contract and correctness evidence. A query alone can be the requested deliverable; execution is not required for completion of a preparation-only assignment.
+For an analyst or developer producing or diagnosing analytical SQL, its result contract and query-correctness evidence. A query alone can be the requested deliverable; execution is not required for completion of a preparation-only assignment. Keep query-level validation within that scope rather than adding a stakeholder analysis or a readiness judgment on an entire supplied report. An independent read-only review may identify a query defect without authorizing its repair.
 
 ## Workflow
 

@@ -1,11 +1,11 @@
 ---
 name: data-analysis-review
-description: Review a supplied analysis, query, report or chart against its source evidence before relying on its conclusions.
+description: Independently review a supplied analysis, query, report or chart against its source evidence without modifying it.
 ---
 
 # Review supplied analysis
 
-For an agent reviewing existing analytical work, return evidence-backed findings and a bounded readiness judgment, not a replacement analysis. This is read-only review: preserve supplied artifacts. Selection grants no authority to install, authenticate, execute code, query production, write files, change data or fix findings. Independently recalculating supplied approved data locally is allowed only when the task authorizes it; otherwise show an inspectable calculation or request the missing evidence. Do not expose credentials or personal data in findings.
+For an agent reviewing existing analytical work, return evidence-backed findings and a bounded readiness judgment, not a replacement analysis or query implementation. Inspectable calculations support findings; they do not change the review into authorship of a new deliverable. This is read-only review: preserve supplied artifacts. Selection grants no authority to install, authenticate, execute code, query production, write files, change data or fix findings. Independently recalculating supplied approved data locally is allowed only when the task authorizes it; otherwise show an inspectable calculation or request the missing evidence. Do not expose credentials or personal data in findings.
 
 ## Workflow
 

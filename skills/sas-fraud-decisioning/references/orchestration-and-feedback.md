@@ -1,6 +1,6 @@
 # Orchestration and alert-feedback boundaries
 
-Load when enrichment, timeout handling, queued delivery, stand-in responses or alert feedback affects strategy acceptance. Conceptual basis: deck slides 43–50; see [source limits](../SOURCES.md). BOSS is identified in the deck as SAS Business Orchestration Services; its presence, adapters, persistence and guarantees must be established on the target. This is a review procedure, not BOSS configuration or an integration API contract.
+Load when enrichment, timeout handling, queued delivery, stand-in responses or alert feedback affects strategy acceptance. Conceptual basis: deck slides 43–50; see [source limits](../SOURCES.md). BOSS is identified in the deck as SAS Business Orchestration Services; its presence, adapters, persistence and guarantees must be established on the target. This is an operational evidence procedure, not BOSS configuration or an integration API contract.
 
 ## Trace one event end to end
 
@@ -22,4 +22,4 @@ Load when enrichment, timeout handling, queued delivery, stand-in responses or a
 | Marking accepted but fulfillment fails | Separate marking persistence and failed/pending fulfillment status |
 | Analyst changes an assessment | Revision/history and feedback availability time, without overwriting provenance |
 
-Return a stage/effect ledger with expected and observed status, missing contracts, responsible owners and the next permitted reconciliation action. Do not promote an analyst marking directly to a mature training label; governance review must establish outcome definition, selection effects and maturity from evidence.
+Return a stage/effect ledger with expected and observed status, revision-bound evidence locators, missing contracts, responsible owners and the next permitted reconciliation action. Mark prepared but unexecuted stages unrun; record missing observations separately from explicit rejection or an observed failed criterion. Carry actual owner approvals and exceptions, not agent approval, into the [release evidence packet](rule-release-evidence.md). Do not promote an analyst marking directly to a mature training label; governance review must establish outcome definition, selection effects and maturity from evidence.
