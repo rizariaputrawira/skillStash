@@ -63,7 +63,7 @@ The selected `SKILL.md` defines the core workflow and points to specialized refe
 
 Choose by execution surface: `sasctl` integrates with Viya services; SWAT runs CAS actions; SASPy runs SAS code through a SAS session, including Viya Compute or SAS 9.4 Workspace Server; `wbctl` controls a separate SAS Workbench installation and its jobs/resources; the accelerator adds its own Model Definition Builder and content workflows. These are not interchangeable clients or runtimes. REST guidance also applies outside Python.
 
-Analysis and implementation are different invocation surfaces. `data-analysis` owns question-to-evidence analysis; `data-sql-analysis` owns analytical query correctness; `data-analysis-review` reviews supplied evidence without silently changing it. `sas-programming` owns SAS program correctness and `sas-model-development` owns analytical model development. None requires a sibling skill, supplies a connection, or turns model selection into permission to publish.
+Choose analytical guidance by deliverable. `data-analysis` owns question-to-findings work, including checks on the analysis being produced; `data-sql-analysis` owns query implementation/diagnosis and query-correctness evidence, even when no broader analysis is requested; `data-analysis-review` independently dispositions supplied evidence and leaves artifacts unchanged. Recalculation during review supports findings, not permission to repair the analysis. `sas-programming` owns SAS program correctness and `sas-model-development` owns analytical model development. None requires a sibling skill, supplies a connection, or turns model selection into permission to publish.
 
 ### MCP integrations
 
@@ -107,7 +107,7 @@ For vendor-neutral skills, use a descriptive domain such as `data-`; do not forc
 | [`sas-saspy-python`](skills/sas-saspy-python/SKILL.md) | Run SAS programs from Python through Viya Compute or SAS 9.4 sessions; validate logs, dataset transfers and session cleanup |
 | [`sas-workbench-cli`](skills/sas-workbench-cli/SKILL.md) | Orchestrate SAS Workbench job definitions, schedules and executions with `wbctl`; verify outcomes and manage environments/storage only when authorized |
 | [`sas-viya-decisioning-mcp`](skills/sas-viya-decisioning-mcp/SKILL.md) | Use discovered SAS MCP tools for supported decisioning assets, rules, lookup versions, MAS publication and business-result verification; check exact Fraud Decisioning applicability |
-| [`sas-fraud-decisioning`](skills/sas-fraud-decisioning/SKILL.md) | Practical SFD workflows: classifications, schemas, profiles, rules/lists, testing and deployment, BOSS orchestration, alert triage, reporting, model handoff and SFM migration |
+| [`sas-fraud-decisioning`](skills/sas-fraud-decisioning/SKILL.md) | Practical SFD workflows: classifications, schemas, profiles, rules/lists, testing and deployment, BOSS orchestration, alert triage, reporting, model handoff acceptance and SFM migration |
 | [`sas-trustworthy-ai-lifecycle`](skills/sas-trustworthy-ai-lifecycle/SKILL.md) | Prepare model-governance evidence, production-readiness reviews and monitoring plans, with fraud-specific review guidance and separate owner approval |
 
 ### Example requests
@@ -134,7 +134,7 @@ These stay within existing owners, without requiring upstream application instal
 - **Decisioning:** MAS input/batch validation and Studio data-grid/lookup preparation. Example: “Use `sas-viya-decisioning-mcp` to preflight supplied MAS batch rows and Studio lookup inputs offline; do not score, import or activate.”
 - **Lifecycle:** Model Manager Fraud Ops KPI review. Example: “Use `sas-trustworthy-ai-lifecycle` to prepare a custom fraud KPI calculation and registration plan from synthetic mature-label evidence; do not run CAS or register it.”
 - **REST:** content-promotion mapping and SCR testing only when that runtime is explicitly selected. Example: “Use `sas-viya-rest-api` to review a DEV-to-UAT content manifest offline, and load SCR testing only if our selected artifact uses SCR; do not authenticate, migrate or start containers.”
-- **Fraud enablement:** the SFD package owns practical product workflows and strategy-to-runtime verification; model development adds a fraud-engine scoring handoff, and lifecycle adds alert-feedback/rules-only governance review. Procedures use supplied official manuals and enablement slides, with package-local editions and limitations—not copied walkthroughs or deployment guarantees.
+- **Fraud enablement:** model development owns the producer's feature/label/transform/artifact and offline-parity packet; SFD owns receiving that evidence, target mapping, engine acceptance and strategy-to-runtime verification. SFD prepares operational release evidence; lifecycle independently dispositions supplied release/alert-feedback evidence and records required owner actions without designing or executing the release. Missing handoff evidence remains an explicit gap, not a requirement to install a sibling skill. Procedures retain package-local official-source editions and limitations—not deployment guarantees.
 
 For Studio step-access administration, the REST skill contains a conditional reference with non-public API, group-mapping and cleanup warnings; no upstream automation is bundled. The lifecycle skill is a governance/documentation surface, not another SAS execution client or permission to deploy.
 
@@ -174,6 +174,8 @@ The integration/analysis reference snapshot was researched on **2026-10-28**; th
 ## Verification and known limits
 
 Offline checks have covered package structure, frontmatter, relative links, examples and selected boundary cases. Isolated, source-loaded exercises covered analysis, SQL, SAS programming, model development, Fraud Decisioning preparation and model-governance review. The BOSS fixture's JSON Schema was checked with valid and invalid cases; BOSS expressions and HTTP/runtime behavior were not executed. These bounded exercises do not establish generalized agent reliability.
+
+The ownership-boundary clarification was exercised on seven synthetic offline tasks against both pre-change and revised guidance, plus three revised-guidance probes for missing model packets, new monitoring plans and explicit KPI preparation. Both versions met the seven shared task requirements; no reliability improvement is claimed. Actors loaded actual entrypoints and conditional package-local references and returned task artifacts without live execution. These exercises did not test native host discovery or OS isolation.
 
 The source review remains partial: extracting text or inspecting selected visuals does not establish that every source table, example or media component was reviewed or incorporated. See the [source index](SOURCES.md#fraud-decisioning-enablement-enrichment) and package-local records for scope and limitations.
 
